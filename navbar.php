@@ -15,7 +15,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column nav-flat nav-legacy nav-child-indent nav-collapse-hide-child" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="index.php?page=dashboard" class="nav-link">
+            <a href="index.php?page=dashboard" class="nav-link nav-dashboard">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Project Dashboard
@@ -25,7 +25,7 @@
 
           <?php if($_SESSION['login_type'] != 1): ?>
           <li class="nav-item">
-            <a href="#" class="nav-link nav-edit_project nav-view_project">
+            <a href="#" class="nav-link nav-edit_project nav-view_project nav-new_project nav-project_list">
               <i class="nav-icon fas fa-layer-group"></i>
               <p>
                 Projects
@@ -58,7 +58,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link nav-files_list nav-files">
             <i class="nav-icon fa fa-file"></i>
               <p>
                 Files
@@ -67,13 +67,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.php?page=files_list" class="nav-link">
+                <a href="./index.php?page=files_list" class="nav-link nav-files_list">
                 <i class="fas fa-lock-open nav-icon"></i>
                   <p>Public Files</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index.php?page=files"  class="nav-link tree-item">
+                <a href="./index.php?page=files"  class="nav-link nav-files">
                   <i class="fas fa-lock nav-icon"></i>
                   <p>Private Files</p>
                 </a>
