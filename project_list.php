@@ -65,26 +65,26 @@ $login_name = $_SESSION['login_name'];
 								<td class="text-center">
 									<?php
 									if ($stat[$row['status']] == 'Pending') {
-										echo "<span class='badge badge-secondary'>{$stat[$row['status']]}</span>";
+										echo "<span class='badge btn-block badge-secondary'>{$stat[$row['status']]}</span>";
 									} elseif ($stat[$row['status']] == 'Started') {
-										echo "<span class='badge badge-primary'>{$stat[$row['status']]}</span>";
+										echo "<span class='badge btn-block badge-primary'>{$stat[$row['status']]}</span>";
 									} elseif ($stat[$row['status']] == 'On-Progress') {
-										echo "<span class='badge badge-info'>{$stat[$row['status']]}</span>";
+										echo "<span class='badge btn-block badge-info'>{$stat[$row['status']]}</span>";
 									} elseif ($stat[$row['status']] == 'On-Hold') {
-										echo "<span class='badge badge-warning'>{$stat[$row['status']]}</span>";
+										echo "<span class='badge btn-block badge-warning'>{$stat[$row['status']]}</span>";
 									} elseif ($stat[$row['status']] == 'Over Due') {
-										echo "<span class='badge badge-danger'>{$stat[$row['status']]}</span>";
+										echo "<span class='badge btn-block badge-danger'>{$stat[$row['status']]}</span>";
 									} elseif ($stat[$row['status']] == 'Done') {
-										echo "<span class='badge badge-success'>{$stat[$row['status']]}</span>";
+										echo "<span class='badge btn-block badge-success'>{$stat[$row['status']]}</span>";
 									}
 									?>
 								</td>
 								<td class="text-center">
-									<a class="dropdown-item view_project" href="./index.php?page=view_project&id=<?php echo $row['project_id'] ?>" data-id="<?php echo $row['project_id'] ?>">View</a>
+									<a class="dropdown-item view_project bg-dark" href="./index.php?page=view_project&id=<?php echo $row['project_id'] ?>" data-id="<?php echo $row['project_id'] ?>"><i class="fas fa-eye"></i> View</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="./index.php?page=edit_project&id=<?php echo $row['project_id'] ?>">Edit</a>
+									<a class="dropdown-item edit_project bg-info" href="./index.php?page=edit_project&id=<?php echo $row['project_id'] ?>"><i class="fas fa-edit"></i> Edit</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item delete_project" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>">Delete</a>
+									<a class="dropdown-item delete_project bg-danger" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><i class="fas fa-trash-alt"></i> Delete</a>
 								</td>
 							</tr>
 						<?php endwhile; ?>

@@ -1,3 +1,6 @@
+ <?php 
+  $login_type = $_SESSION['login_type'];
+ ?>
  <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -19,7 +22,8 @@
               </p>
             </a>
           </li>
- 
+
+          <?php if($_SESSION['login_type'] != 1): ?>
           <li class="nav-item">
             <a href="#" class="nav-link nav-edit_project nav-view_project">
               <i class="nav-icon fas fa-layer-group"></i>
@@ -29,14 +33,13 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-            <?php if($_SESSION['login_type'] != 1): ?>
               <li class="nav-item">
                 <a href="./index.php?page=new_project" class="nav-link nav-new_project tree-item">
                   <i class="fas fa-angle-right nav-icon"></i>
                   <p>Add New</p>
                 </a>
               </li>
-            <?php endif; ?>
+            
               <li class="nav-item">
                 <a href="./index.php?page=project_list" class="nav-link nav-project_list tree-item">
                   <i class="fas fa-angle-right nav-icon"></i>
@@ -45,6 +48,7 @@
               </li>
             </ul>
           </li> 
+          <?php endif; ?>
           
           <li class="nav-item">
                 <a href="./index.php?page=task_list" class="nav-link nav-task_list">
@@ -76,7 +80,6 @@
               </li>
             </ul>
           </li>  
-
           <?php if ($_SESSION['login_type'] == 1) : ?>
             <li class="nav-item">
             <a href="index.php?page=users" class="nav-link">

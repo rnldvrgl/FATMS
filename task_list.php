@@ -1,12 +1,18 @@
-<?php include 'db_connect.php' ?>
+<?php include 'db_connect.php';
+$login_id = $_SESSION['login_id'];
+$login_name = $_SESSION['login_name'];
+$login_type = $_SESSION['login_type'];
+?>
 <div class="content-wrapper">
 	<div class="col-lg-12">
 		<div class="card card-outline card-dark">
-			<div class="card-header">
-				<div class="card-tools">
-					<a class="btn btn-block btn-sm btn-success btn-flat border-primary" href="./index.php?page=new_project"><i class="fa fa-plus"></i> Add New project</a>
+			<?php if ($login_type == 2) : ?>
+				<div class="card-header">
+					<div class="card-tools">
+						<a class="btn btn-block btn-sm btn-success btn-flat border-primary" href="./index.php?page=new_project"><i class="fa fa-plus"></i> Add New project</a>
+					</div>
 				</div>
-			</div>
+			<?php endif; ?>
 			<div class="card-body">
 				<table class="table tabe-hover table-condensed" id="list">
 					<colgroup>
@@ -31,10 +37,16 @@
 					</thead>
 					<tbody>
 						<?php
+						if ($login_type == 1) : 
+							$qryTL = "SELECT * FROM task_list t inner join project_list p on p.project_id = t.project_id order by p.project_name asc";
+						endif;
+                        if ($_SESSION['login_type'] == 2) :
+							$qryTL = "SELECT * FROM task_list t inner join project_list p on p.project_id = t.project_id WHERE t.user_id = $login_id order by p.project_name asc";
+						endif;
 						$i = 1;
 
 						$stat = array("Pending", "Started", "On-Progress", "On-Hold", "Over Due", "Done");
-						$qry = $conn->query("SELECT * FROM task_list t inner join project_list p on p.project_id = t.project_id order by p.project_name asc");
+						$qry = $conn->query($qryTL);
 						while ($row = $qry->fetch_assoc()) :
 							$trans = get_html_translation_table(HTML_ENTITIES, ENT_QUOTES);
 							unset($trans["\""], $trans["<"], $trans[">"], $trans["<h2"]);

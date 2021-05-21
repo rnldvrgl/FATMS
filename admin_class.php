@@ -221,19 +221,19 @@ Class Action {
 			return 1;
 		}
 	}
-	function get_report(){
-		extract($_POST);
-		$data = array();
-		$get = $this->db->query("SELECT t.*,p.name as ticket_for FROM ticket_list t inner join pricing p on p.id = t.pricing_id where date(t.date_created) between '$date_from' and '$date_to' order by unix_timestamp(t.date_created) desc ");
-		while($row= $get->fetch_assoc()){
-			$row['date_created'] = date("M d, Y",strtotime($row['date_created']));
-			$row['name'] = ucwords($row['name']);
-			$row['adult_price'] = number_format($row['adult_price'],2);
-			$row['child_price'] = number_format($row['child_price'],2);
-			$row['amount'] = number_format($row['amount'],2);
-			$data[]=$row;
-		}
-		return json_encode($data);
+	// function get_report(){
+	// 	extract($_POST);
+	// 	$data = array();
+	// 	$get = $this->db->query("SELECT t.*,p.name as ticket_for FROM ticket_list t inner join pricing p on p.id = t.pricing_id where date(t.date_created) between '$date_from' and '$date_to' order by unix_timestamp(t.date_created) desc ");
+	// 	while($row= $get->fetch_assoc()){
+	// 		$row['date_created'] = date("M d, Y",strtotime($row['date_created']));
+	// 		$row['name'] = ucwords($row['name']);
+	// 		$row['adult_price'] = number_format($row['adult_price'],2);
+	// 		$row['child_price'] = number_format($row['child_price'],2);
+	// 		$row['amount'] = number_format($row['amount'],2);
+	// 		$data[]=$row;
+	// 	}
+	// 	return json_encode($data);
 
-	}
+	// }
 }
