@@ -164,7 +164,7 @@ $files = $conn->query("SELECT * FROM files where folder_id = $folder_parent and 
 										?>
 											<tr class='file-item' data-id="<?php echo $row['id'] ?>" data-name="<?php echo $name ?>">
 												<td>
-													<large><span><i class="fa <?php echo $icon ?>"></i></span><b class="to_file"> <?php echo $name ?></b></large>
+													<large><span><i class="fa <?php echo $icon ?> mr-2"></i></span><b class="to_file"> <?php echo $name ?></b></large>
 													<input type="text" class="rename_file" value="<?php echo $row['name'] ?>" data-id="<?php echo $row['id'] ?>" data-type="<?php echo $row['file_type'] ?>" style="display: none">
 
 												</td>

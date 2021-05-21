@@ -130,7 +130,7 @@ a.custom-menu-list span.icon{
 									<tr class='file-item' data-id="<?php echo $row['id'] ?>" data-name="<?php echo $name ?>">
 										<td><i><?php echo ucwords($row['uname']) ?></i></td>
 										<td>
-											<large><span><i class="fa <?php echo $icon ?>"></i></span><b> <?php echo $name ?></b></large>
+											<large><span><i class="fa <?php echo $icon ?> mr-2"></i></span><b> <?php echo $name ?></b></large>
 											<input type="text" class="rename_file" value="<?php echo $row['name'] ?>" data-id="<?php echo $row['id'] ?>" data-type="<?php echo $row['file_type'] ?>" style="display: none">
 
 										</td>
