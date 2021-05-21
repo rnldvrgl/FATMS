@@ -67,10 +67,10 @@
             <div class="card-header">
                 <?php
                 if ($login_type == 1) :
-                    echo "<b>Project Progress</b>";
+                    echo "<b>Student Projects List :</b>";                    
                 endif;
                 if ($login_type == 2) :
-                    echo "<b>Student Projects List :</b>";
+                    echo "<b>Project Progress</b>";
                 endif;
                 ?>
             </div>
@@ -87,8 +87,8 @@
                             endif;
                             if ($login_type == 2) :
                                 echo "<col width='5%'>";
-                                echo "<col width='35%'>";
-                                echo "<col width='35%'>";
+                                echo "<col width='25%'>";
+                                echo "<col width='45%'>";
                                 echo "<col width='15%'>";
                                 echo "<col width='10%'>";
                             endif;
@@ -169,27 +169,27 @@
                                     <td class="project-state">
                                         <?php
                                         if ($stat[$row['status']] == 'Pending') {
-                                            echo "<span class='badge badge-secondary'>{$stat[$row['status']]}</span>";
+                                            echo "<span class='badge btn-block badge-secondary'>{$stat[$row['status']]}</span>";
                                         } elseif ($stat[$row['status']] == 'Started') {
-                                            echo "<span class='badge badge-primary'>{$stat[$row['status']]}</span>";
+                                            echo "<span class='badge btn-block badge-primary'>{$stat[$row['status']]}</span>";
                                         } elseif ($stat[$row['status']] == 'On-Progress') {
-                                            echo "<span class='badge badge-warning'>{$stat[$row['status']]}</span>";
+                                            echo "<span class='badge btn-block badge-info'>{$stat[$row['status']]}</span>";
                                         } elseif ($stat[$row['status']] == 'On-Hold') {
-                                            echo "<span class='badge badge-warning'>{$stat[$row['status']]}</span>";
+                                            echo "<span class='badge btn-block badge-warning'>{$stat[$row['status']]}</span>";
                                         } elseif ($stat[$row['status']] == 'Over Due') {
-                                            echo "<span class='badge badge-danger'>{$stat[$row['status']]}</span>";
+                                            echo "<span class='badge btn-block badge-danger'>{$stat[$row['status']]}</span>";
                                         } elseif ($stat[$row['status']] == 'Done') {
-                                            echo "<span class='badge badge-success'>{$stat[$row['status']]}</span>";
+                                            echo "<span class='badge btn-block badge-success'>{$stat[$row['status']]}</span>";
                                         }
                                         ?>
                                     </td>
                                     <td>
                                         <?php if ($login_type != 1) : ?>
-                                            <a class="btn btn-primary btn-sm" href="./index.php?page=view_project&id=<?php echo $row['project_id'] ?>" />
+                                            <a class="btn btn-primary btn-block btn-sm" href="./index.php?page=view_project&id=<?php echo $row['project_id'] ?>" />
                                             <i class="fas fa-folder">
                                             </i>
                                             View
-                                            </a>";
+                                            </a>
                                         <?php endif; ?>
 
                                     </td>

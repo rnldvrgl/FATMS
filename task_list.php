@@ -19,10 +19,10 @@ $login_type = $_SESSION['login_type'];
 						<col width="5%">
 						<col width="15%">
 						<col width="20%">
-						<col width="20%">
-						<col width="20%">
-						<col width="10%">
-						<col width="10%">
+						<col width="15%">
+						<col width="15%">
+						<col width="15%">
+						<col width="15%">
 					</colgroup>
 					<thead>
 						<tr>
@@ -81,28 +81,28 @@ $login_type = $_SESSION['login_type'];
 								<td class="text-center">
 									<?php
 									if ($stat[$row['status']] == 'Pending') {
-										echo "<span class='badge badge-secondary'>{$stat[$row['status']]}</span>";
+										echo "<span class='badge btn-block badge-secondary'>{$stat[$row['status']]}</span>";
 									} elseif ($stat[$row['status']] == 'Started') {
-										echo "<span class='badge badge-primary'>{$stat[$row['status']]}</span>";
+										echo "<span class='badge btn-block badge-primary'>{$stat[$row['status']]}</span>";
 									} elseif ($stat[$row['status']] == 'On-Progress') {
-										echo "<span class='badge badge-info'>{$stat[$row['status']]}</span>";
+										echo "<span class='badge btn-block badge-info'>{$stat[$row['status']]}</span>";
 									} elseif ($stat[$row['status']] == 'On-Hold') {
-										echo "<span class='badge badge-warning'>{$stat[$row['status']]}</span>";
+										echo "<span class='badge btn-block badge-warning'>{$stat[$row['status']]}</span>";
 									} elseif ($stat[$row['status']] == 'Over Due') {
-										echo "<span class='badge badge-danger'>{$stat[$row['status']]}</span>";
+										echo "<span class='badge btn-block badge-danger'>{$stat[$row['status']]}</span>";
 									} elseif ($stat[$row['status']] == 'Done') {
-										echo "<span class='badge badge-success'>{$stat[$row['status']]}</span>";
+										echo "<span class='badge btn-block badge-success'>{$stat[$row['status']]}</span>";
 									}
 									?>
 								</td>
 								<td>
 									<?php
 									if ($row['status'] == 1) {
-										echo "<span class='badge badge-secondary'>Pending</span>";
+										echo "<span class='badge btn-block badge-secondary'>Pending</span>";
 									} elseif ($row['status'] == 2) {
-										echo "<span class='badge badge-primary'>On-Progress</span>";
+										echo "<span class='badge btn-block badge-primary'>On-Progress</span>";
 									} elseif ($row['status'] == 3) {
-										echo "<span class='badge badge-success'>Done</span>";
+										echo "<span class='badge btn-block badge-success'>Done</span>";
 									}
 									?>
 								</td>
