@@ -69,6 +69,7 @@ Class Action {
 		if($delete)
 			echo 1;
 	}
+
 	function delete_file(){
 		extract($_POST);
 		$path = $this->db->query("SELECT file_path from files where id=".$id)->fetch_array()['file_path'];
@@ -155,7 +156,7 @@ Class Action {
 		extract($_POST);
 		$data = "";
 		foreach($_POST as $k => $v){
-			if(!in_array($k, array('project_id','user_id')) && !is_numeric($k)){
+			if(!in_array($k, array('user_id','project_id')) && !is_numeric($k)){
 				if($k == 'description')
 					$v = htmlentities(str_replace("'","&#x2019;",$v));
 				if(empty($data)){
