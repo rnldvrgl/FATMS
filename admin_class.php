@@ -69,7 +69,6 @@ Class Action {
 		if($delete)
 			echo 1;
 	}
-
 	function delete_file(){
 		extract($_POST);
 		$path = $this->db->query("SELECT file_path from files where id=".$id)->fetch_array()['file_path'];
@@ -154,26 +153,17 @@ Class Action {
 	}
 	function save_project(){
 		extract($_POST);
-		$data = "";
-		foreach($_POST as $k => $v){
-			if(!in_array($k, array('user_id','project_id')) && !is_numeric($k)){
-				if($k == 'description')
-					$v = htmlentities(str_replace("'","&#x2019;",$v));
-				if(empty($data)){
-					$data .= " $k='$v' ";
-				}else{
-					$data .= ", $k='$v' ";
-				}
-			}
-		}
-		if(isset($user_id)){
-			$data .= ", user_id='".implode(',',$user_id)."' ";
-		}
+		$data = " project_name = '$project_name' ";
+		$data .= ", description = '$description' ";
+		$data .= ", status = '$status' ";
+		$data .= ", end_date = '$end_date' ";
+		$data .= ", user_id = '$user_id' ";
+		$data .= ", start_date = '$start_date' ";
 		// echo $data;exit;
 		if(empty($id)){
 			$save = $this->db->query("INSERT INTO project_list set $data");
 		}else{
-			$save = $this->db->query("UPDATE project_list set $data where project_id = $id");
+			$save = $this->db->query("UPDATE project_list set $data where project_id = $project_id");
 		}
 		if($save){
 			return 1;
@@ -181,7 +171,7 @@ Class Action {
 	}
 	function delete_project(){
 		extract($_POST);
-		$delete = $this->db->query("DELETE FROM project_list where project_id = $id");
+		$delete = $this->db->query("DELETE FROM project_list where project_id = $project_id");
 		if($delete){
 			return 1;
 		}

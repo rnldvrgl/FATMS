@@ -7,7 +7,7 @@
 			<div class="card-body">
 				<form action="" id="manage-project">
 
-					<input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">
+					<input type="hidden" name="project_id" value="<?php echo isset($project_id) ? $project_id : '' ?>">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -76,9 +76,7 @@
 			success: function(resp) {
 				if (resp == 1) {
 					alert_toast('Data successfully saved', "success");
-					setTimeout(function() {
-						location.href = 'index.php?page=project_list'
-					}, 2000)
+					location.href = 'index.php?page=project_list';
 				}
 			}
 		})

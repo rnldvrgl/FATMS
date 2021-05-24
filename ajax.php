@@ -77,10 +77,5 @@ if($action == 'delete_task'){
 	if($save)
 		echo $save;
 }
-if($action == 'get_report'){
-	$get = $crud->get_report();
-	if($get)
-		echo $get;
-}
 ob_end_flush();
 ?>

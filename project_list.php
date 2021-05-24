@@ -1,6 +1,6 @@
 <?php include 'db_connect.php';
-$login_id = $_SESSION['login_id'];
-$login_name = $_SESSION['login_name'];
+	$login_id = $_SESSION['login_id'];
+	$login_name = $_SESSION['login_name'];
 ?>
 <div class="content-wrapper">
 	<div class="col-lg-12">
@@ -84,7 +84,7 @@ $login_name = $_SESSION['login_name'];
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item edit_project bg-info" href="./index.php?page=edit_project&id=<?php echo $row['project_id'] ?>"><i class="fas fa-edit"></i> Edit</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item delete_project bg-danger" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><i class="fas fa-trash-alt"></i> Delete</a>
+									<a class="dropdown-item delete_project bg-danger" href="javascript:void(0)" data-id="<?php echo $row['project_id'] ?>"><i class="fas fa-trash-alt"></i> Delete</a>
 								</td>
 							</tr>
 						<?php endwhile; ?>
@@ -110,13 +110,13 @@ $login_name = $_SESSION['login_name'];
 	_conf("Are you sure to delete this project?","delete_project",[$(this).attr('data-id')])
 	})
 
-	function delete_project($id) {
+	function delete_project($project_id) {
 		start_load()
 		$.ajax({
 			url: 'ajax.php?action=delete_task',
 			method: 'POST',
 			data: {
-				id: $id
+				project_id: $project_id
 			},
 			success: function(resp) {
 				if (resp == 1) {
