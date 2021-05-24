@@ -157,7 +157,12 @@ Class Action {
 		$data .= ", description = '$description' ";
 		$data .= ", status = '$status' ";
 		$data .= ", end_date = '$end_date' ";
-		$data .= ", user_id = '$user_id' ";
+		/* 
+		if you want to include user_id, add hidden input inside form that contains user id 
+		currently commented out since it has no use/column in database table
+		*/
+
+		// $data .= ", user_id = '$user_id' ";
 		$data .= ", start_date = '$start_date' ";
 		// echo $data;exit;
 		if(empty($id)){

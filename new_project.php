@@ -12,7 +12,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="" class="control-label">Name</label>
-								<input type="text" class="form-control form-control-sm" name="name" value="<?php echo isset($qry['project_name']) ? $qry['project_name'] : '' ?>">
+								<input type="text" class="form-control form-control-sm" name="project_name" value="<?php echo isset($qry['project_name']) ? $qry['project_name'] : '' ?>">
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -64,10 +64,11 @@
 <script>
 	$('#manage-project').submit(function(e) {
 		e.preventDefault()
+		var data = new FormData(document.getElementById("manage-project"));
 		start_load()
 		$.ajax({
 			url: 'ajax.php?action=save_project',
-			data: new FormData($(this)[0]),
+			data: data,
 			cache: false,
 			contentType: false,
 			processData: false,
