@@ -1,6 +1,6 @@
 <?php 
 include 'db_connect.php';
-$login_id = $_SESSION['login_id'];
+session_start();
 if(isset($_GET['id'])){
 	$qry = $conn->query("SELECT * FROM task_list where task_list.task_id = ".$_GET['id'])->fetch_array();
 	foreach($qry as $k => $v){
@@ -10,9 +10,9 @@ if(isset($_GET['id'])){
 ?>
 <div class="container-fluid">
 	<form action="" id="manage-task">
-		<input type="text" name="user_id" value="<?php echo isset($login_id) ? $login_id : ''  ?>">
-		<input type="text" name="task_id" value="<?php echo isset($task_id) ? $task_id : '' ?>">
-		<input type="text" name="project_id" value="<?php echo isset($_GET['pid']) ? $_GET['pid'] : '' ?>">
+		<input type="hidden" name="user_id" value="<?php echo $_SESSION['login_id']?>">
+		<input type="hidden" name="task_id" value="<?php echo isset($task_id) ? $task_id : '' ?>">
+		<input type="hidden" name="project_id" value="<?php echo isset($_GET['pid']) ? $_GET['pid'] : '' ?>">
 		<div class="form-group">
 			<label for="">Task</label>
 			<input type="text" class="form-control form-control-sm" name="task" value="<?php echo isset($task) ? $task : '' ?>" required>

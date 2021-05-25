@@ -1,5 +1,6 @@
 <?php
 session_start();
+$login_id = $_SESSION['login_id'];
 Class Action {
 	private $db;
 
