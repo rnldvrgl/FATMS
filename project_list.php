@@ -7,7 +7,7 @@
 		<div class="card card-outline card-success">
 			<div class="card-header">
 				<div class="card-tools">
-					<a class="btn btn-block btn-sm btn-default btn-flat border-primary" href="./index.php?page=new_project"><i class="fa fa-plus"></i> Add New project</a>
+					<a class="btn btn-block btn-sm btn-success btn-flat" href="./index.php?page=new_project"><i class="fa fa-plus"></i> Add New project</a>
 				</div>
 			</div>
 			<div class="card-body">
@@ -84,7 +84,7 @@
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item edit_project bg-info" href="./index.php?page=edit_project&id=<?php echo $row['project_id'] ?>"><i class="fas fa-edit"></i> Edit</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item delete_project bg-danger" href="javascript:void(0)" data-id="<?php echo $row['project_id'] ?>"><i class="fas fa-trash-alt"></i> Delete</a>
+									<a class="dropdown-item delete_project bg-danger" href="javascript:void(0)" data-id='<?php echo $row['project_id'] ?>'><i class="fas fa-trash-alt"></i> Delete</a>
 								</td>
 							</tr>
 						<?php endwhile; ?>
@@ -113,7 +113,7 @@
 	function delete_project($project_id) {
 		start_load()
 		$.ajax({
-			url: 'ajax.php?action=delete_task',
+			url: 'ajax.php?action=delete_project',
 			method: 'POST',
 			data: {
 				project_id: $project_id

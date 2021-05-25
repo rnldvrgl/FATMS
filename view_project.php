@@ -129,11 +129,11 @@ endif;
 											?>
 										</td>
 										<td class="text-center">
-											<a class="dropdown-item view_task" href="javascript:void(0)" data-id="<?php echo $row['task_id'] ?>" data-task="<?php echo $row['task'] ?>">View</a>
+											<a class="dropdown-item view_task bg-dark" href="javascript:void(0)" data-id="<?php echo $row['task_id'] ?>" data-task="<?php echo $row['task'] ?>"><i class="fas fa-eye"></i> View</a>
 											<div class="dropdown-divider"></div>
-											<a class="dropdown-item edit_task" href="javascript:void(0)" data-id="<?php echo $row['task_id'] ?>" data-task="<?php echo $row['task'] ?>">Edit</a>
+											<a class="dropdown-item edit_task bg-info" href="javascript:void(0)" data-id="<?php echo $row['task_id'] ?>" data-task="<?php echo $row['task'] ?>"><i class="fas fa-edit"></i> Edit</a>
 											<div class="dropdown-divider"></div>
-											<a class="dropdown-item delete_task" href="javascript:void(0)" data-id="<?php echo $row['task_id'] ?>">Delete</a>
+											<a class="dropdown-item delete_task bg-danger" href="javascript:void(0)" data-id="<?php echo $row['task_id'] ?>"><i class="fas fa-trash-alt"></i> Delete</a>
 										</td>
 									</tr>
 								<?php
@@ -178,12 +178,12 @@ endif;
 	_conf("Are you sure to delete this task?","delete_task",[$(this).attr('data-id')])
 	})
 
-	function delete_task($id){
+	function delete_task($task_id){
 		start_load()
 		$.ajax({
 			url:'ajax.php?action=delete_task',
 			method:'POST',
-			data:{id:$id},
+			data:{task_id:$task_id},
 			success:function(resp){
 				if(resp==1){
 					alert_toast("Data successfully deleted",'success')

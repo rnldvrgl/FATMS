@@ -124,13 +124,13 @@ $login_type = $_SESSION['login_type'];
 	}
 </style>
 <script>
-	function delete_project($id) {
+	function delete_project($project_id) {
 		start_load()
 		$.ajax({
 			url: 'ajax.php?action=delete_project',
 			method: 'POST',
 			data: {
-				id: $id
+				project_id: $project_id
 			},
 			success: function(resp) {
 				if (resp == 1) {

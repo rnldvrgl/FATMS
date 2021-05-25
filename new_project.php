@@ -1,12 +1,13 @@
 <?php if (!isset($conn)) {
 	include 'db_connect.php';
+
 } ?>
 <div class="content-wrapper">
 	<div class="col-lg-12">
 		<div class="card card-outline card-primary">
 			<div class="card-body">
 				<form action="" id="manage-project">
-
+					<input type="text" name="user_id" value="<?php echo isset($user_id) ? $user_id : ''  ?>">
 					<input type="hidden" name="project_id" value="<?php echo isset($project_id) ? $project_id : '' ?>">
 					<div class="row">
 						<div class="col-md-6">

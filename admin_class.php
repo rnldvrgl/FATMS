@@ -153,7 +153,7 @@ Class Action {
 	}
 	function save_project(){
 		extract($_POST);
-		$data = " project_name = '$project_name' ";
+		$data = "project_name = '$project_name' ";
 		$data .= ", description = '$description' ";
 		$data .= ", status = '$status' ";
 		$data .= ", end_date = '$end_date' ";
@@ -161,22 +161,21 @@ Class Action {
 		if you want to include user_id, add hidden input inside form that contains user id 
 		currently commented out since it has no use/column in database table
 		*/
-
-		// $data .= ", user_id = '$user_id' ";
+		$data .= ", user_id = '$user_id' ";
 		$data .= ", start_date = '$start_date' ";
 		// echo $data;exit;
-		if(empty($id)){
+		if(empty($project_id)){
 			$save = $this->db->query("INSERT INTO project_list set $data");
 		}else{
-			$save = $this->db->query("UPDATE project_list set $data where project_id = $project_id");
+			$save = $this->db->query("UPDATE project_list set $data where project_list.project_id = $project_id");
 		}
-		if($save){
+		if($save){	
 			return 1;
 		}
 	}
 	function delete_project(){
 		extract($_POST);
-		$delete = $this->db->query("DELETE FROM project_list where project_id = $project_id");
+		$delete = $this->db->query("DELETE FROM project_list where project_list.project_id = $project_id");
 		if($delete){
 			return 1;
 		}
@@ -189,22 +188,20 @@ Class Action {
 	}
 	function save_task(){
 		extract($_POST);
-		$data = "";
-		foreach($_POST as $k => $v){
-			if(!in_array($k, array('task_id')) && !is_numeric($k)){
-				if($k == 'description')
-					$v = htmlentities(str_replace("'","&#x2019;",$v));
-				if(empty($data)){
-					$data .= " $k='$v' ";
-				}else{
-					$data .= ", $k='$v' ";
-				}
-			}
-		}
-		if(empty($id)){
+		$data = "`task_id` = '$task_id' ";
+		$data .= ", `project_id` = '$project_id' ";
+		$data .= ", `user_id` = '$user_id' ";
+		$data .= ", `task` = '$task' ";
+		$data .= ", `description` = '$description' ";
+		$data .= ", `status` = '$status' ";
+		/* 
+		if you want to include user_id, add hidden input inside form that contains user id 
+		currently commented out since it has no use/column in database table
+		*/
+		if(empty($task_id)){
 			$save = $this->db->query("INSERT INTO task_list set $data");
 		}else{
-			$save = $this->db->query("UPDATE task_list set $data where task_id = $id");
+			$save = $this->db->query("UPDATE task_list set $data where task_list.task_id = $task_id");
 		}
 		if($save){
 			return 1;
@@ -212,7 +209,7 @@ Class Action {
 	}
 	function delete_task(){
 		extract($_POST);
-		$delete = $this->db->query("DELETE FROM task_list where task_id = $id");
+		$delete = $this->db->query("DELETE FROM task_list where task_list.task_id = $task_id");
 		if($delete){
 			return 1;
 		}
